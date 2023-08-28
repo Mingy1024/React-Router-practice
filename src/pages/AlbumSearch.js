@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
+import List from '../components/List';
 
 const api = 'https://api.unsplash.com/search/photos';
 const accessId = process.env.REACT_APP_UNSPLASH_ACCESS;
@@ -10,11 +11,6 @@ export default function AlbumSearch() {
   const [list, setList] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    // console.log(searchParams.get('query')); // 取出
-    // setSearchParams({query: 'building'});
-  }, []);
 
   useEffect(() => {
     if (search !== '') {
@@ -47,13 +43,7 @@ export default function AlbumSearch() {
           }
         }}
       />
-      {list.map((item) => {
-        return (
-          <li key={item.id}>
-            <Link to={`/album/${item.id}`}>{item.id}</Link>
-          </li>
-        );
-      })}
+      <List list={list}></List>
     </>
   );
 }
