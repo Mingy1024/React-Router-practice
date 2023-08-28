@@ -20,7 +20,7 @@ export default function AlbumPhoto() {
         <div>
             這是單張圖片
             <p>{photo.alt_description}</p>
-            <img src={photo.urls.regular} className="img-fluid" alt="" />
+            <img src={photo.urls?.regular} className="img-fluid" alt="" />
         </div>
     )
 }
