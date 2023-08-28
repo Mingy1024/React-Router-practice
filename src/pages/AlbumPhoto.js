@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const api = 'https://api.unsplash.com/photos';
 const accessId = process.env.REACT_APP_UNSPLASH_ACCESS;
@@ -8,6 +8,7 @@ const accessId = process.env.REACT_APP_UNSPLASH_ACCESS;
 export default function AlbumPhoto() {
     const { id } = useParams();
     const [photo, setPhoto] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async() => {
@@ -18,6 +19,7 @@ export default function AlbumPhoto() {
 
     return (
         <div>
+            <button type="button" onClick={() => navigate(-1)}>回到上一頁</button>
             這是單張圖片
             <p>{photo.alt_description}</p>
             <img src={photo.urls?.regular} className="img-fluid" alt="" />
