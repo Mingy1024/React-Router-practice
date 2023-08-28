@@ -19,7 +19,6 @@ export default function AlbumSearch() {
           `${api}/?client_id=${accessId}&query=${search}`
         );
         const { results } = response.data;
-        console.log(results);
         setList(results);
       })();
     }
